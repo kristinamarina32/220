@@ -46,8 +46,10 @@ def sequence():
 
 def pi():
     n = eval(input("Enter the number of terms in the series:"))
-    number_pi = 1
+    num = 1
+    den = 1
     for i in range(n):
-        numerator = ((((i + 1) % 2) * 2) + number_pi)
+        product = product * (num/den)
+        numerator = ((((i + 1) % 2) * 2) + num)
         print(numerator, end="\t")
 
