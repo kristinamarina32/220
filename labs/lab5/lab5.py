@@ -191,7 +191,7 @@ def process_list():
 def main():
     # target()
     # triangle()
-    # color_shape()
+    color_shape()
     # process_string()
     # process_list()
     pass
