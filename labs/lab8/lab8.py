@@ -84,7 +84,6 @@ def send_safe_message(file, friend, key):
     friend_file.close()
 
 
-
 def main():
     # number_words("walrus.txt", "new.txt")
     # hourly_wages("hourly_wages.txt", "new_hourly_wages.txt")
