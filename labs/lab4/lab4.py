@@ -2,13 +2,13 @@
 Name: Kristina Rydbom
 lab4.py
 
-Problem: Complete lab 4 problems.
+Problem: Completed lab 4 problems (fixed for extra credit).
 
 Certification of Authenticity:
 I certify that this assignment is entirely my own work.
 """
-
 from graphics import *
+import math
 
 
 def squares():
@@ -35,7 +35,7 @@ def squares():
 
     # create a space to instruct user
     inst_pt = Point(width / 2, height - 10)
-    instructions = Text(inst_pt, "Click to move square")
+    instructions = Text(inst_pt, "Click to draw an additional square")
     instructions.draw(win)
 
     # builds a square
@@ -59,6 +59,7 @@ def squares():
         shape.setFill("red")
         shape.draw(win)
     inst_pt = Point(width / 2, height - 20)
+    instructions.undraw()
     message = Text(inst_pt, "Click again to quit")
     message.draw(win)
 
@@ -100,6 +101,9 @@ def rectangle():
     msg2 = "Perimeter = " + str(perimeter)
     message2 = Text(Point(350, 350), msg2)
     message2.draw(win)
+    message.undraw()
+    message_close = Text(Point(350, 450), "Click to end program")
+    message_close.draw(win)
 
     win.getMouse()
     win.close()
@@ -111,18 +115,27 @@ def circle():
     height = 400
     win = GraphWin("Lab 4", width, height)
 
-    instructions = Text("Click to create circle")
+    instructions = Text(Point(200, 350), "Click to create circle")
     instructions.draw(win)
     center = win.getMouse()
-    circumference = win.getMouse()
-    d = (center.getX() - circumference.getX()) + (center.getY() - circumference.getY())
+    outer = win.getMouse()
+    x1 = center.getX()
+    x2 = outer.getX()
+    y1 = center.getY()
+    y2 = outer.getY()
+    d = math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2))
+    msg_r = "Radius = " + str(round(d, 2))
+    radius = Text(Point(200, 300), msg_r)
+    radius.draw(win)
     print(d)
-
-    shape = Circle(Point(50, 50), 20)
+    shape = Circle(center, d)
     shape.setOutline("red")
     shape.setFill("red")
     shape.draw(win)
 
+    instructions.undraw()
+    instructions2 = Text(Point(200, 350), "Click to close")
+    instructions2.draw(win)
     win.getMouse()
     win.close()
 
