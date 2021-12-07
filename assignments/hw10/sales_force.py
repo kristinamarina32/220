@@ -9,6 +9,7 @@ I certify that this assignment is entirely my own work.
 """
 from sales_person import SalesPerson
 
+
 class SalesForce:
 
     def __init__(self):
@@ -37,13 +38,18 @@ class SalesForce:
         return big_list
 
     def top_seller(self):
-        highest_sales = []
-        # for sale in :
-            # ... = sale.get_sales()
+        highest_sales = [self.sales_people[0]]
+        for sale in self.sales_people:
+            if highest_sales[0].compare_to(sale) == -1 or highest_sales[0].compare_to(sale) == 0:
+                highest_sales = [sale]
+            elif highest_sales[0].compare_to(sale) == 0:
+                highest_sales.append(sale)
+        return highest_sales
 
-
-
-
+    # loop through and compare each current max to each one and yeah set max to be new max item in list
     def individual_sales(self, employee_id):
-
-
+        for each in self.sales_people:
+            i_d = each.get_id()
+            if i_d == employee_id:
+                return each
+        return None
